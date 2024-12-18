@@ -1,7 +1,7 @@
 # Finxter Academy - Building a Meme Generator using Python, ChatGPT, and Streamlit
 This repository contains the finished code for the "Meme Generator" course at the Finxter Academy. Head over to the Finxter academy to enroll in the course with both written and video tutorials.
 
-https://academy.finxter.com/
+[https://academy.finxter.com/university/ai-meme-engineer/](https://academy.finxter.com/university/ai-meme-engineer/)
 
 ## Introduction
 
