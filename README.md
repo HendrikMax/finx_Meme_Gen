@@ -15,3 +15,5 @@ In order to become the Master of Memes, we will go through 4 steps in total:
 - In the 4th and final part we will put it all together, funneling the responses from ChatGPT into our image editing logic, and then building a Streamlit frontend to display the memes!
 
 I hope you're excited to get started. Let's dive right in!
+
+# Python-Env: Python 3.12.6 Environment: Finxter-Google-Gemini-xxxx

@@ -1,3 +1,5 @@
+# Definition of the system instructions for the meme generation model from openai
+
 SYSTEM_INSTRUCTIONS_TEMPLATE = """
 You are a meme-generating robot. You will receive a situation or simply some text from the user. If the user describes a situation or even a whole story, use the main situation or topic as much as possible for the meme. If the user simply provides very simple text or even a single word, use the topic to generate a meme.
 
@@ -18,7 +20,7 @@ Example output:
 """
 
 
-EXAMPLE_OUTPUT= """
+EXAMPLE_OUTPUT = """
 {
     "output": [
         {

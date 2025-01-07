@@ -1,3 +1,5 @@
+# Program to overlay text on images using PIL and save the result to a file
+
 import textwrap
 from pathlib import Path
 from uuid import uuid4
@@ -5,7 +7,6 @@ from uuid import uuid4
 from PIL import Image, ImageDraw, ImageFont
 
 from load_meme_data import MemeData
-
 
 ROOT_DIRECTORY = Path(__file__).resolve().parent
 IMAGE_FOLDER = ROOT_DIRECTORY / "templates"
@@ -129,8 +130,5 @@ if __name__ == "__main__":
     from load_meme_data import MemeData, load_meme_data
 
     meme_data: list[MemeData] = load_meme_data()
-    chosen_meme = meme_data[4]
-    overlay_text_on_image(
-        chosen_meme,
-        chosen_meme["example_output"]
-    )
+    chosen_meme = meme_data[10]
+    overlay_text_on_image(chosen_meme, chosen_meme["example_output"])

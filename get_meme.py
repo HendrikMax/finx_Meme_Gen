@@ -1,3 +1,5 @@
+# Program to generate memes using OpenAI's GPT-4o model and overlay text on images
+
 import json
 import os
 from pathlib import Path
@@ -20,12 +22,12 @@ class MemeGPTOutput(TypedDict):
 load_dotenv()
 
 CLIENT = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-MEME_DATA_TEXT = load_meme_data_flat_string() 
+MEME_DATA_TEXT = load_meme_data_flat_string()
 SYSTEM_MESSAGE = {
     "role": "system",
     "content": [
         {
-            "type": "text", 
+            "type": "text",
             "text": get_system_instructions(MEME_DATA_TEXT),
         }
     ],
@@ -35,7 +37,7 @@ SYSTEM_MESSAGE = {
 def call_chatgpt(user_message):
     response = CLIENT.chat.completions.create(
         model="gpt-4o",
-        messages=[SYSTEM_MESSAGE, user_message], # type: ignore
+        messages=[SYSTEM_MESSAGE, user_message],  # type: ignore
         temperature=1,
         max_tokens=2048,
         response_format={"type": "json_object"},
@@ -59,20 +61,22 @@ def generate_memes(user_input: str) -> list[str] | None:
     if not response:
         print("No response from the model, something went wrong.")
         return
-    
+
     try:
-        meme_output: list[MemeGPTOutput] = json.loads(response)['output']
+        meme_output: list[MemeGPTOutput] = json.loads(response)["output"]
     except json.JSONDecodeError:
         print("Invalid response from the model.")
         return
-    
+
     meme_data: list[MemeData] = load_meme_data()
     images = []
     for ai_meme in meme_output:
         chosen_meme_index = int(ai_meme["meme_id"])
         print(f"MemeGPT chose the meme: {meme_data[chosen_meme_index]['name']}")
         print(f"Meme text: {ai_meme['meme_text']}")
-        image_path: Path = overlay_text_on_image(meme_data[chosen_meme_index], ai_meme["meme_text"])
+        image_path: Path = overlay_text_on_image(
+            meme_data[chosen_meme_index], ai_meme["meme_text"]
+        )
         images.append(str(image_path))
     return images
 
